@@ -1,24 +1,18 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import '@luisbeqja/web-sense/web-sense.js';
 </script>
 
 <template>
-  <h1>WebSense AI</h1>
-  <h3>Welcome, here you can configure your new Chat Assistant.</h3>
-  <HelloWorld msg="Vite + Vue" />
+  <div class="main">
+      <RouterView />
+  </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.main{
+  background: url('./assets/blur_bg.png');
+  height: 100vh;
+  padding: 2rem;
+  overflow: hidden;
 }
 </style>

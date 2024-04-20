@@ -9,7 +9,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.4.21"
+    "@luisbeqja/web-sense": "^0.0.13",
+    "axios": "^1.6.8",
+    "i": "^0.3.7",
+    "npm": "^10.5.2",
+    "vue": "^3.4.23",
+    "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
