@@ -2,13 +2,15 @@
   <div id="demo">
     <h1>WebSense AI</h1>
     <p>
-      Our product is not relised yet, but here you try a Demo that hase learned
-      every think from this page
+      Although our product hasn't been released yet, we invite you to explore a
+      demo that has absorbed insights from this page: .
+      
       <span
         ><a class="link" href="https://luisbeqja.com/"
           >https://luisbeqja.com/</a
         ></span
       >
+      Try it out!
     </p>
     <web-sense id="luisbeqja_collection" />
   </div>
