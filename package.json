@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@luisbeqja/web-sense": "^0.0.13",
+    "@luisbeqja/web-sense": "^0.0.14",
     "axios": "^1.6.8",
     "i": "^0.3.7",
     "npm": "^10.5.2",
