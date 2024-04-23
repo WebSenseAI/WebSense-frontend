@@ -9,6 +9,25 @@
 
 <script setup>
 import NewBotInput from '../components/NewBotInput.vue';
+import { onBeforeMount, onMounted } from 'vue';
+import axios from 'axios';
+
+const fetchUserInfo = async () => {
+  try {
+    // Make a GET request to the Flask server to fetch user info
+    const response = await axios.get('http://localhost:5000/userinfo', {
+      withCredentials: true,
+    });
+    // Set user data in component state
+    console.log(response)
+  } catch (error) {
+    console.error('Error fetching user information:', error);
+  }
+};
+
+onBeforeMount(() => {
+  fetchUserInfo(); 
+});
 </script>
 
 <style></style>

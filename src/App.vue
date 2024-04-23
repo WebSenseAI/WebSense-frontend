@@ -4,12 +4,12 @@ import '@luisbeqja/web-sense/web-sense.js';
 
 <template>
   <div class="main">
-      <RouterView />
+    <RouterView />
   </div>
 </template>
 
 <style scoped>
-.main{
+.main {
   background: url('./assets/blur_bg.png');
   height: 100vh;
   padding: 2rem;
