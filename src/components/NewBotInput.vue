@@ -18,8 +18,9 @@ const additionalInfo = ref('');
 const openAIKey = ref('');
 
 const createChatBot = async () => {
-  if (store.bot.id !== null) {
+  if (store.bot.id !== '') {
     alert('You already have a chatbot');
+    location.reload()
     return;
   }
   try {
@@ -31,7 +32,7 @@ const createChatBot = async () => {
       key: openAIKey.value.value,
       user_id: props.userId.id,
     });
-    router.push('/');
+    location.reload()
   } catch (error) {
     console.error(error);
   }
