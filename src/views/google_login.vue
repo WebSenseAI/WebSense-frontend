@@ -2,7 +2,7 @@
   <div id="demo">
     <h1>WebSense AI</h1>
     <div class="google_button__container">
-      <a class="google_button flex" href="http://localhost:5000/login">
+      <a class="google_button flex" :href="`${SERVER_URL}/login`">
         <span><img src="../assets/google_logo.svg" alt=""></span>
         Sign In with Google
       </a>
@@ -17,6 +17,7 @@
 <script setup>
 import WebSenseVue from '../components/websense/WebSense.vue';
 import '@luisbeqja/web-sense/web-sense.js';
+import { SERVER_URL } from '../utils';
 </script>
 
 <style>

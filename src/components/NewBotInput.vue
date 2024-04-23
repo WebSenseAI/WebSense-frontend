@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '../store/pina';
-
+import { SERVER_URL } from '../utils'
 const router = useRouter();
 const store = useUserStore();
 
@@ -23,7 +23,7 @@ const createChatBot = async () => {
     return;
   }
   try {
-    const response = await axios.post('http://127.0.0.1:5000/api/new/bot', {
+    const response = await axios.post(`${SERVER_URL}/api/new/bot`, {
       name: assistantName.value.value,
       website: websiteUrl.value.value,
       description: websiteDescription.value.value,
