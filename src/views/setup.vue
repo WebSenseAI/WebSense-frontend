@@ -2,31 +2,25 @@
   <div>
     <h1>WebSense AI</h1>
     <h3>Welcome, here you can configure your new Chat Assistant.</h3>
-    <NewBotInput msg="Vite + Vue" />
+    <NewBotInput msg="Vite + Vue" :userId="userInfo.user" />
     <web-sense id="luisbeqja_collection"></web-sense>
   </div>
 </template>
 
 <script setup>
 import NewBotInput from '../components/NewBotInput.vue';
-import { onBeforeMount, onMounted } from 'vue';
+import { onBeforeMount, onMounted, ref, computed } from 'vue';
 import axios from 'axios';
+import { fetchUserInfo, fetchUserBotInfo } from '../api/info';
+import { useUserStore } from '../store/pina';
+const store = useUserStore();
 
-const fetchUserInfo = async () => {
-  try {
-    // Make a GET request to the Flask server to fetch user info
-    const response = await axios.get('http://localhost:5000/userinfo', {
-      withCredentials: true,
-    });
-    // Set user data in component state
-    console.log(response)
-  } catch (error) {
-    console.error('Error fetching user information:', error);
-  }
-};
+const userInfo = computed(() => store.getAllInfoGetter);
 
-onBeforeMount(() => {
-  fetchUserInfo(); 
+onMounted(() => {
+  fetchUserInfo().then((result) => {
+    fetchUserBotInfo(result.id);
+  });
 });
 </script>
 

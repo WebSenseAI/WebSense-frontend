@@ -1,6 +1,15 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
+import { useUserStore } from '../store/pina';
+
+const router = useRouter();
+const store = useUserStore();
+
+const props = defineProps({
+  userId: String,
+});
 
 const assistantName = ref('');
 const websiteUrl = ref('');
@@ -9,7 +18,10 @@ const additionalInfo = ref('');
 const openAIKey = ref('');
 
 const createChatBot = async () => {
-  console.log(assistantName.value.value);
+  if (store.bot.id !== null) {
+    alert('You already have a chatbot');
+    return;
+  }
   try {
     const response = await axios.post('http://127.0.0.1:5000/api/new/bot', {
       name: assistantName.value.value,
@@ -17,8 +29,9 @@ const createChatBot = async () => {
       description: websiteDescription.value.value,
       message: additionalInfo.value.value,
       key: openAIKey.value.value,
+      user_id: props.userId.id,
     });
-    console.log(response.data);
+    router.push('/');
   } catch (error) {
     console.error(error);
   }
