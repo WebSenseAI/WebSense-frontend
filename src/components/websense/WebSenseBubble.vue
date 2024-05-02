@@ -12,7 +12,7 @@
       <p>
         Absolutely! Simply click on the provided link and log in to begin
         crafting your very own bot!
-        <span class="link"> <router-link to="/demo">LINK</router-link></span>
+        <span class="link"> <router-link to="/login">LINK</router-link></span>
       </p>
     </div>
   </div>

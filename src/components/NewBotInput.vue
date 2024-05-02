@@ -1,9 +1,9 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, defineEmits } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '../store/pina';
-import { SERVER_URL } from '../utils'
+import { SERVER_URL } from '../utils';
 const router = useRouter();
 const store = useUserStore();
 
@@ -17,10 +17,15 @@ const websiteDescription = ref('');
 const additionalInfo = ref('');
 const openAIKey = ref('');
 
+// Define the events that this component can emit
+const emit = defineEmits(['botCreated']);
+
+
 const createChatBot = async () => {
+  emit('botCreated');
   if (store.bot.id !== '') {
     alert('You already have a chatbot');
-    location.reload()
+    location.reload();
     return;
   }
   try {
@@ -32,7 +37,7 @@ const createChatBot = async () => {
       key: openAIKey.value.value,
       user_id: props.userId.id,
     });
-    location.reload()
+    location.reload();
   } catch (error) {
     console.error(error);
   }

@@ -12,7 +12,7 @@
       >
       Try it out!
     </p>
-    <web-sense id="luisbeqja_collection" />
+    <web-sense id="ebfd25cb-c056-46d0-8fd8-ae55f7536ea5" />
   </div>
 </template>
 
