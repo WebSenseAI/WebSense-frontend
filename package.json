@@ -10,14 +10,22 @@
   },
   "dependencies": {
     "@luisbeqja/web-sense": "^0.0.15",
+    "@vueuse/core": "^10.9.0",
     "axios": "^1.6.8",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "i": "^0.3.7",
+    "lucide-vue-next": "^0.376.0",
     "npm": "^10.5.2",
     "pinia": "^2.1.7",
+    "radix-vue": "^1.7.3",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7",
     "vue": "^3.4.23",
     "vue-router": "^4.3.2"
   },
   "devDependencies": {
+    "@types/node": "^20.12.8",
     "@vitejs/plugin-vue": "^5.0.4",
     "autoprefixer": "^10.4.19",
     "daisyui": "^4.9.0",
