@@ -1,21 +1,18 @@
 <template>
   <div id="home">
-    <h1>WebSense AI</h1>
-    <h2 class=" mt-20 text-3xl">
-      Easily deploy a chat assistant for your website with just one click!
+    <h1>{{ $t('website.web_sense_ai') }}</h1>
+    <h2 class="mt-20 text-3xl">
+      {{ $t('website.landing_description') }}
     </h2>
     <h4>
-      WebSense get all the information needed from your website automatically
-      you just need to install it.
+      {{ $t('website.landing_description_2') }}
     </h4>
     <WebSenseVue />
   </div>
 </template>
 
 <script setup>
-import WebSenseVue from "../components/websense/WebSense.vue";
-
-
+import WebSenseVue from '../components/websense/WebSense.vue';
 </script>
 
 <style>

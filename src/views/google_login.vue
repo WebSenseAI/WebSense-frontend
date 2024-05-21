@@ -1,14 +1,13 @@
 <template>
   <div id="demo">
-    <h1>WebSense AI</h1>
+    <h1>{{ $t('website.web_sense_ai') }}</h1>
     <div class="google_button__container">
       <a class="google_button flex" :href="`${SERVER_URL}/login`">
         <span><img src="../assets/google_logo.svg" alt=""></span>
-        Sign In with Google
+        {{ $t('website.login_with_google') }}
       </a>
       <p class="google_button__text">
-        I know...just google? we spent all our energy on the bot...more login
-        option coming soon
+        {{ $t('website.login_with_google_only') }}
       </p>
     </div>
   </div>

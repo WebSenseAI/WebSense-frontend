@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <h1>WebSense AI</h1>
+    <h1>{{ $t('website.web_sense_ai') }}</h1>
     <img class="mt-20 center loading_img" src="../assets/loadingLogo.png" alt="" />
     <p class=" absolute bottom-20 font-semibold text-xl w-3/4">
       Hi Luis, your bot is in the process of learning everything from your

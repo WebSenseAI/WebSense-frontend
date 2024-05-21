@@ -1,13 +1,13 @@
 <template>
   <div v-if="userInfo.bot.id === '' && !isLoading">
-    <h1>WebSense AI</h1>
+    <h1>{{ $t('website.web_sense_ai') }}</h1>
     <h3>Welcome, here you can configure your new Chat Assistant.</h3>
     <NewBotInput msg="Vite + Vue" :userId="userInfo.user" @botCreated="handleBotCreated"/>
     <web-sense id="3f462270-1e9d-4055-b334-060867fdd0fc"></web-sense>
   </div>
   <loading_bot v-else-if="isLoading"></loading_bot>
    <div v-else>
-    <h1>WebSense AI</h1>
+    <h1>{{ $t('website.web_sense_ai') }}</h1>
     <h3>Welcome <span>{{ userInfo.user.name }}</span>, here you have all the info of your Chat Bot</h3>
     <p>{{ userInfo.bot.name }}</p>
     <p>This is the id of your chat:{{ userInfo.bot.id }}</p>

@@ -1,7 +1,7 @@
 <template>
   <div class="websenseheader">
     <h3 class=" font-bold text-3xl mb-7">WebSenseAI</h3>
-    <p>A live chat interface that allows for seamless, natural communication and connection.</p>
+    <p>{{ $t('website.chat.description') }}</p>
   </div>
 </template>
 

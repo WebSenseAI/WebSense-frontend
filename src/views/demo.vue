@@ -1,6 +1,6 @@
 <template>
   <div id="demo">
-    <h1>WebSense AI</h1>
+    <h1>{{ $t('website.web_sense_ai') }}</h1>
     <p>
       Although our product hasn't been released yet, we invite you to explore a
       demo that has absorbed insights from this page: .
