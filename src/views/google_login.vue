@@ -2,13 +2,14 @@
   <div id="demo">
     <h1>{{ $t('website.web_sense_ai') }}</h1>
     <div class="google_button__container">
-      <a class="google_button flex" :href="`${SERVER_URL}/login`">
-        <span><img src="../assets/google_logo.svg" alt=""></span>
+      <a class="login_button flex" :href="`${SERVER_URL}/login`">
+        <span><img class="login_button_img" src="../assets/google_logo.svg" alt="" /></span>
         {{ $t('website.login_with_google') }}
       </a>
-      <p class="google_button__text">
-        {{ $t('website.login_with_google_only') }}
-      </p>
+      <a class="login_button flex" :href="`${SERVER_URL}/login`">
+        <span><img class="login_button_img" src="../assets/github_logo.svg" alt="" /></span>
+        {{ $t('website.login_with_github') }}
+      </a>
     </div>
   </div>
 </template>
@@ -37,7 +38,7 @@ import { SERVER_URL } from '../utils';
   align-items: center;
   justify-content: center;
 }
-.google_button {
+.login_button {
   gap: 10px;
   background-color: white;
   color: black;
@@ -50,7 +51,11 @@ import { SERVER_URL } from '../utils';
   cursor: pointer;
   width: fit-content;
 }
-.google_button__text {
+.login_button_img {
+  width: 24px;
+  height: 24px;
+}
+.login_button__text {
   font-size: 18px;
   margin-top: 10px;
   color: #cacaca;
