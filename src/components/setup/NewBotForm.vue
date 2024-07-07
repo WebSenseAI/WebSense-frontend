@@ -1,6 +1,6 @@
 <template>
   <form
-    v-if="loading"
+    v-if="!loading"
     class="flex flex-col gap-4"
     action=""
     @submit.prevent="handleCreateChatBot"
@@ -37,7 +37,7 @@
     />
     <button class="btn btn-primary w-fit">Create you bot 🤖</button>
   </form>
-  <NewBotLoading />
+  <NewBotLoading v-else />
 </template>
 
 <script setup lang="ts">
@@ -76,8 +76,8 @@ function handleCreateChatBot() {
     message: firstMessage.value,
     key: openAIKey.value,
   };
-  createChatBot(botInfo, userInfoStore.id).then(() => {
-    window.location.href = '/';
+  createChatBot(botInfo, userInfoStore.id).finally(() => {
+    loading.value = false;
   });
 }
 </script>

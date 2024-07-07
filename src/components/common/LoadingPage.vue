@@ -35,10 +35,10 @@ onMounted(() => {
 .loading-page {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
+  width: 85vw;;
   height: 100%;
-  background-color: #1d232a;
+  background-color: #ffffff;
   z-index: 9999999999;
   overflow: hidden;
   display: flex;

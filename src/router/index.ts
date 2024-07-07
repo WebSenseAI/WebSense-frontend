@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import DashboardView from '@/views/DashboardView.vue';
+import HomePageView from '@/views/HomePageView.vue';
 import LoginView from '@/views/LoginView.vue';
 import SetupView from '@/views/SetupView.vue';
-
+import HowToUseView from '@/views/HowToUseView.vue';
 import { isLoggedIn } from '@/services/authService';
 
 const routes = [
     {
         path: '/',
         name: 'Dashboard',
-        component: DashboardView,
+        component: HomePageView,
         meta: { requiresAuth: true },
     },
     {
@@ -23,6 +23,12 @@ const routes = [
         component: SetupView,
         meta: { requiresAuth: true },
     },
+    {
+        path: '/howtouse',
+        name: 'HowToUse',
+        component: HowToUseView,
+        meta: { requiresAuth: true },
+    }
 ];
 
 const router = createRouter({

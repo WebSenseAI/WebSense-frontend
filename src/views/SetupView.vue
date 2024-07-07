@@ -11,49 +11,10 @@
               >here you can manage your chatbot</span
             >
           </h1>
-          <!--TODO: add if user has already a bot or not-->
           <template v-if="botInfoStore.botExists">
-            <span class="line"></span>
-            <div class="divider">You have currently a chat bot set up.</div>
-            <div class="stats shadow">
-              <div class="stat">
-                <div class="stat-value">{{ botInfoStore.fullName }}</div>
-                <div class="stat-title text-primary">{{ botInfoStore.id }}</div>
-                <div class="stat-title text-primary">
-                  {{ botInfoStore.website }}
-                </div>
-                <div class="stat-desc">{{ botInfoStore.description }}</div>
-              </div>
-            </div>
-            <div class="divider">Analitycs</div>
-            <div class="indicator w-full">
-              <span class="indicator-item badge badge-primary"
-                >12 new users</span
-              >
-              <div class="w-full stats shadow">
-                <div class="stat">
-                  <div class="stat-title">Total messages</div>
-                  <div class="stat-value font-thin">12,413</div>
-                  <!-- TODO: get from API -->
-                  <div class="stat-desc">532 users have used this bot</div>
-                </div>
-              </div>
-            </div>
-            <div class="w-full stats shadow">
-              <div class="stat">
-                <div class="stat-title">Tokens used</div>
-                <div class="stat-value font-thin">321,413</div>
-                <!-- TODO: get from API -->
-                <div class="stat-desc">212 euro</div>
-              </div>
-            </div>
-            <button class="btn btn-primary" @click="clickDeleteBot">
-              Delete bot
-            </button>
+            <BotInfo />
           </template>
-
           <NewBot v-if="!botInfoStore.botExists" />
-          <!--  -->
         </div>
         <div class="flex justify-start">
           <img src="@/assets/WebSenseAI.png" alt="Chatbot" />
@@ -65,9 +26,9 @@
 
 <script setup lang="ts">
 import ClassicView from '@/layouts/ClassicView.vue';
-import NewBot from '@/components/setup/NewBot.vue';
+import NewBot from '@/components/setup/NewBotForm.vue';
+import BotInfo from '@/components/setup/BotInfo.vue';
 import { useUserInfoStore, useBotInfoStore } from '@/store/index';
-import { deleteBot } from '@/services/botService';
 
 const userInfoStore = useUserInfoStore();
 const botInfoStore = useBotInfoStore();
@@ -76,10 +37,6 @@ const list = [
   { text: 'Login', href: '/login', isCurrent: true },
   { text: 'Setup', href: '/setup', isCurrent: false },
 ];
-
-function clickDeleteBot() {
-  deleteBot(botInfoStore.id);
-}
 </script>
 
 <style scoped lang="scss"></style>
