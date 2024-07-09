@@ -12,6 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@luisbeqja/web-sense": "^0.0.19",
     "axios": "^1.7.2",
     "pinia": "^2.1.7",
     "socket.io-client": "^4.7.5",

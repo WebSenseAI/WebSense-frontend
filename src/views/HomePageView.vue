@@ -19,11 +19,13 @@
     </div>
     <Alert />
   </ClassicView>
+  <web-sense id="ba8e3182-7375-45e7-9d1a-f6221fe7480c" />
 </template>
 
 <script setup lang="ts">
 import ClassicView from '@/layouts/ClassicView.vue';
 import Alert from '@/components/common/Alert.vue';
+import '@luisbeqja/web-sense/web-sense.js';
 
 const list = [
   { text: 'Login', href: '/login', isCurrent: false },
