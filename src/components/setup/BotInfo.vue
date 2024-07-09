@@ -57,10 +57,6 @@ function clickDeleteBot() {
     return;
   }
 }
-
-function clickEditBot() {
-  console.log('Edit bot');
-}
 </script>
 
 <style scoped lang="scss"></style>

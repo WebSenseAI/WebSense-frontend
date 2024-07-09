@@ -37,7 +37,7 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _, next) => {
     // Check if the route requires authentication and the user is not logged in
     const isLogged = await isLoggedIn();
 
