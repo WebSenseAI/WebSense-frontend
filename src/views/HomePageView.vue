@@ -19,13 +19,16 @@
     </div>
     <Alert />
   </ClassicView>
-  <web-sense id="ba8e3182-7375-45e7-9d1a-f6221fe7480c" />
+  <web-sense :id="botInfoStore.id" />
 </template>
 
 <script setup lang="ts">
 import ClassicView from '@/layouts/ClassicView.vue';
 import Alert from '@/components/common/Alert.vue';
 import '@luisbeqja/web-sense/web-sense.js';
+import { useBotInfoStore } from '@/store/index';
+
+const botInfoStore = useBotInfoStore();
 
 const list = [
   { text: 'Login', href: '/login', isCurrent: false },
