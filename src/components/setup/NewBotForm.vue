@@ -50,7 +50,7 @@ import NewBotLoading from '@/components/setup/NewBotLoading.vue';
 import { onUnmounted, ref } from 'vue';
 import { createChatBot } from '@/services/botService';
 import { useUserInfoStore } from '@/store/index';
-
+import { SERVER_URL } from '@/utils/url';
 const userInfoStore = useUserInfoStore();
 
 const assistantName = ref('');
@@ -61,7 +61,7 @@ const openAIKey = ref('');
 
 const loading = ref(false);
 
-const socket = io('http://localhost:5000');
+const socket = io(SERVER_URL);
 
 socket.on('message', (msg) => {
   console.log('Message received:', msg);
