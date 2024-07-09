@@ -1,7 +1,7 @@
 import { useAxios } from '@/composables/axios';
 import { SERVER_URL } from '@/utils/url';
 
-const { post, get, remove, data } = useAxios(SERVER_URL);
+const { post, get, remove, put, data } = useAxios(SERVER_URL);
 
 export async function createChatBot(botInfo: any, userId: string) {
     try {
@@ -20,6 +20,26 @@ export async function createChatBot(botInfo: any, userId: string) {
     }
 }
 
+export async function deleteBot(botId: string) {
+    try {
+        await remove(`/api/bot/remove/${botId}`);
+    } catch (error) {
+        console.error('Error deleting chat bot:', error);
+    } finally {
+        return data.value;
+    }
+}
+
+export async function editBot(botId: string, botInfo: any) {
+    try {
+        await put(`/api/bot/edit/${botId}`, botInfo);
+    } catch (error) {
+        console.error('Error editing chat bot:', error);
+    } finally {
+        return data.value;
+    }
+}
+
 export async function fetchBotInfo(botId: string) {
     try {
         await get(`/api/user/bot/${botId}`);
@@ -32,14 +52,4 @@ export async function fetchBotInfo(botId: string) {
 
 export async function isBotExists(botId: string) {
     return !!fetchBotInfo(botId);
-}
-
-export async function deleteBot(botId: string) {
-    try {
-        await remove(`/api/bot/remove/${botId}`);
-    } catch (error) {
-        console.error('Error deleting chat bot:', error);
-    } finally {
-        return data.value;
-    }
 }

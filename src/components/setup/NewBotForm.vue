@@ -12,6 +12,7 @@
       class="input input-bordered input-primary w-full max-w-xs"
     />
     <input
+      v-if="!isEdit"
       v-model="websiteUrl"
       type="text"
       placeholder="Website URL"
@@ -35,7 +36,10 @@
       placeholder="OpenAI API Key"
       class="input input-bordered input-primary w-full max-w-xs"
     />
-    <button class="btn btn-primary w-fit">Create you bot 🤖</button>
+    <button v-if="isEdit" class="btn btn-primary w-fit">
+      Edit your bot info 🤖
+    </button>
+    <button v-else class="btn btn-primary w-fit">Create you bot 🤖</button>
   </form>
   <NewBotLoading v-else />
 </template>
@@ -80,6 +84,25 @@ function handleCreateChatBot() {
     loading.value = false;
   });
 }
+
+function EditBot() {
+  const botInfo = {
+    name: assistantName.value,
+    description: websiteDescription.value,
+    message: firstMessage.value,
+    key: openAIKey.value,
+  };
+  createChatBot(botInfo, userInfoStore.id).finally(() => {
+    loading.value = false;
+  });
+}
+
+defineProps<{
+  isEdit: {
+    type: Boolean;
+    default: false;
+  };
+}>();
 </script>
 
 <style scoped lang="scss"></style>

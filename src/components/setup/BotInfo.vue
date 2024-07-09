@@ -3,7 +3,7 @@
   <div class="divider">You have currently a chat bot set up.</div>
   <div class="stats shadow">
     <div class="stat">
-      <router-link to="howtouse" >BOT INFO</router-link>
+      <router-link to="howtouse" class="text-xs">HOW TO USE</router-link>
       <div class="stat-value">{{ botInfoStore.fullName }}</div>
       <div class="stat-title text-primary">{{ botInfoStore.id }}</div>
       <div class="stat-title text-primary">
@@ -32,13 +32,20 @@
       <div class="stat-desc">212 euro</div>
     </div>
   </div>
-  <button class="btn btn-error" @click="clickDeleteBot">Delete bot</button>
+  <div class="w-full flex gap-2 justify-normal">
+    <Modal id="modal-id" title="Edit bot 📝" > 
+      <h3>Edit Your bot info</h3>
+      <NewBotForm  :is-edit="true" />
+    </Modal>
+    <button class="btn btn-error" @click="clickDeleteBot">Delete bot 🗑</button>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { deleteBot } from '@/services/botService';
 import { useBotInfoStore } from '@/store/index';
-
+import Modal from '@/components/common/Modal.vue';
+import NewBotForm from '@/components/setup/NewBotForm.vue';
 const botInfoStore = useBotInfoStore();
 
 function clickDeleteBot() {
@@ -49,6 +56,10 @@ function clickDeleteBot() {
   } else {
     return;
   }
+}
+
+function clickEditBot() {
+  console.log('Edit bot');
 }
 </script>
 

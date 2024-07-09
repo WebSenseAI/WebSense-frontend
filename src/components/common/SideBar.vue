@@ -17,7 +17,7 @@
 
 const list = [
   { text: 'Home', href: '/' },
-  { text: 'Setup', href: '/setup' },
+  { text: 'Bot', href: '/setup' },
 ];
 </script>
 

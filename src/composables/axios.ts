@@ -7,7 +7,7 @@ interface AxiosState {
     data: Ref<any>;
 }
 
-export function useAxios(baseURL: string,): { get: (url: string) => Promise<any>, post: (url: string, data: any) => Promise<any>, remove: (url: string, data?: any) => Promise<any> } & AxiosState {
+export function useAxios(baseURL: string,): { get: (url: string) => Promise<any>, post: (url: string, data: any) => Promise<any>, remove: (url: string, data?: any) => Promise<any>, put: (url: string, data: any) => Promise<any> } & AxiosState {
     const instance: AxiosInstance = axios.create({
         baseURL,
         timeout: 5000,
@@ -57,6 +57,18 @@ export function useAxios(baseURL: string,): { get: (url: string) => Promise<any>
             loading.value = false;
         }
     }
+    async function put(url: string, data: any): Promise<any> {
+        loading.value = true;
+        try {
+            const response: AxiosResponse<any> = await instance.put(url, data);
+            data.value = response.data;
+            error.value = null;
+        } catch (err) {
+            handleRequestError(err);
+        } finally {
+            loading.value = false;
+        }
+    }
 
 
     function handleRequestError(err: unknown): void {
@@ -69,5 +81,5 @@ export function useAxios(baseURL: string,): { get: (url: string) => Promise<any>
         }
     }
 
-    return { get, post,remove, loading, error, data };
+    return { get, post, remove, loading, error, put, data };
 }
