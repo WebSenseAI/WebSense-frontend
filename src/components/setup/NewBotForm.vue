@@ -82,6 +82,7 @@ function handleCreateChatBot() {
   };
   createChatBot(botInfo, userInfoStore.id).finally(() => {
     loading.value = false;
+    window.location.href = '/setup';
   });
 }
 export interface Props {
