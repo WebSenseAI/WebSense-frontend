@@ -10,7 +10,7 @@
         /></span>
         Login with Google
       </a>
-      <a class="login_button flex" :href="`/login`">
+      <a class="login_button flex" :href="`${SERVER_URL}/auth/register/oauth/github`">
         <span
           ><img
             class="login_button_img"
