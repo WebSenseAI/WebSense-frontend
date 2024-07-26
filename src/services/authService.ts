@@ -1,4 +1,5 @@
 import { useAxios } from '@/composables/axios';
+import { normalizedUser } from '@/utils/normalizers/userNoramlizer';
 import { SERVER_URL } from '@/utils/url';
 
 const AUTH_TOKEN_KEY = 'sessionUser';
@@ -12,7 +13,7 @@ export async function fetchUserInfo() {
         console.error('Error fetching user information:', error);
     } finally {
         login(data.value?.id || null);
-        return data.value;
+        return normalizedUser(data.value.user_metadata);
     }
 };
 

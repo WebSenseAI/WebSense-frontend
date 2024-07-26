@@ -1,31 +1,34 @@
 <template>
-  <div id="demo">
-    <div class="google_button__container">
-      <a class="login_button flex" :href="`${SERVER_URL}/auth/register/oauth/google`">
-        <span
-          ><img
-            class="login_button_img"
-            src="@/assets/logos/google_logo.svg"
-            alt=""
-        /></span>
-        Login with Google
-      </a>
-      <a class="login_button flex" :href="`${SERVER_URL}/auth/register/oauth/github`">
-        <span
-          ><img
-            class="login_button_img"
-            src="@/assets/logos/github_logo.svg"
-            alt=""
-        /></span>
-        Login with Github
-      </a>
-    </div>
+  <div class="google_button__container">
+    <a
+      class="login_button flex"
+      :href="`${SERVER_URL}/auth/register/oauth/google`"
+    >
+      <span
+        ><img
+          class="login_button_img"
+          src="@/assets/logos/google_logo.svg"
+          alt=""
+      /></span>
+      Login with Google
+    </a>
+    <a
+      class="login_button flex"
+      :href="`${SERVER_URL}/auth/register/oauth/github`"
+    >
+      <span
+        ><img
+          class="login_button_img"
+          src="@/assets/logos/github_logo.svg"
+          alt=""
+      /></span>
+      Login with Github
+    </a>
   </div>
 </template>
 
 <script setup lang="ts">
-import { SERVER_URL } from "@/utils/url";
-
+import { SERVER_URL } from '@/utils/url';
 </script>
 
 <style lang="scss" scoped>

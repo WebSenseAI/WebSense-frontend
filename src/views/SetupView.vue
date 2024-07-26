@@ -14,7 +14,7 @@
           <template v-if="botInfoStore.botExists">
             <BotInfo />
           </template>
-          <NewBot v-if="!botInfoStore.botExists" />
+          <NewBot v-else />
         </div>
         <div class="flex justify-start">
           <img src="@/assets/WebSenseAI.png" alt="Chatbot" />
