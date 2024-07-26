@@ -29,7 +29,7 @@ export async function createChatBot(botInfo: any, userId: string) {
 //         return data.value;
 //     }
 // }
-export async function deleteBot(botId: string) {
+export async function deleteBot() {
     try {
         await remove(`/api/bot/remove`);
     } catch (error) {
@@ -49,7 +49,7 @@ export async function editBot(botId: string, botInfo: any) {
     }
 }
 
-export async function fetchBotInfo(botId: string) {
+export async function fetchBotInfo() {
     try {
         await get(`/api/bot/info`);
     } catch (error) {
@@ -59,6 +59,6 @@ export async function fetchBotInfo(botId: string) {
     }
 }
 
-export async function isBotExists(botId: string) {
-    return !!fetchBotInfo(botId);
+export async function isBotExists() {
+    return !!fetchBotInfo();
 }

@@ -50,7 +50,7 @@ const botInfoStore = useBotInfoStore();
 
 function clickDeleteBot() {
   if (confirm('Are you sure you want to delete this bot?')) {
-    deleteBot(botInfoStore.id).finally(() => {
+    deleteBot().finally(() => {
       window.location.href = '/setup';
     });
   } else {
