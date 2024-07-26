@@ -30,7 +30,7 @@ export function login(token: string): void {
 export async function logout(): Promise<void> {
     console.log('logout');
     try {
-        await get('/api/auth/logout');
+        await get('/auth/logout');
     } catch (error) {
         console.error('Error fetching user information:', error);
     } finally {
