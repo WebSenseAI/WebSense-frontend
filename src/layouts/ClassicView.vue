@@ -32,7 +32,7 @@ onBeforeMount(async () => {
       userInfoStore.setUserInfo(userInfo);
     }
     if (!botInfoStore.botExists) {
-      const botInfo = await fetchBotInfo(userInfoStore.id);
+      const botInfo = await fetchBotInfo();
       botInfoStore.setBotInfo(botInfo);
     }
   } catch (error) {
@@ -47,7 +47,7 @@ onMounted(async () => {
       userInfoStore.setUserInfo(userInfo);
     }
     if (!botInfoStore.botExists) {
-      const botInfo = await fetchBotInfo(userInfoStore.id);
+      const botInfo = await fetchBotInfo();
       botInfoStore.setBotInfo(botInfo);
     }
   } catch (error) {

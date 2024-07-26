@@ -5,7 +5,7 @@ const { post, get, remove, put, data } = useAxios(SERVER_URL);
 
 export async function createChatBot(botInfo: any, userId: string) {
     try {
-        await post('/api/new/bot', {
+        await post('/api/bot/new', {
             name: botInfo.name,
             website: botInfo.website,
             description: botInfo.description,
@@ -20,13 +20,22 @@ export async function createChatBot(botInfo: any, userId: string) {
     }
 }
 
-export async function deleteBot(botId: string) {
+// export async function deleteBot(botId: string) {
+//     try {
+//         await remove(`/api/bot/remove/${botId}`);
+//     } catch (error) {
+//         console.error('Error deleting chat bot:', error);
+//     } finally {
+//         return data.value;
+//     }
+// }
+export async function deleteBot() {
     try {
-        await remove(`/api/bot/remove/${botId}`);
+        await remove(`/api/bot/remove`);
     } catch (error) {
         console.error('Error deleting chat bot:', error);
     } finally {
-        return data.value;
+        return true;
     }
 }
 
@@ -40,9 +49,9 @@ export async function editBot(botId: string, botInfo: any) {
     }
 }
 
-export async function fetchBotInfo(botId: string) {
+export async function fetchBotInfo() {
     try {
-        await get(`/api/user/bot/${botId}`);
+        await get(`/api/bot/info`);
     } catch (error) {
         console.error('Error fetching chat bot information:', error);
     } finally {
@@ -50,6 +59,6 @@ export async function fetchBotInfo(botId: string) {
     }
 }
 
-export async function isBotExists(botId: string) {
-    return !!fetchBotInfo(botId);
+export async function isBotExists() {
+    return !!fetchBotInfo();
 }

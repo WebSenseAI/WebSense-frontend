@@ -1,7 +1,7 @@
 <template>
   <div id="demo">
     <div class="google_button__container">
-      <a class="login_button flex" :href="`${SERVER_URL}/login`">
+      <a class="login_button flex" :href="`${SERVER_URL}/auth/register/oauth/google`">
         <span
           ><img
             class="login_button_img"
@@ -10,7 +10,7 @@
         /></span>
         Login with Google
       </a>
-      <a class="login_button flex" :href="`/login`">
+      <a class="login_button flex" :href="`${SERVER_URL}/auth/register/oauth/github`">
         <span
           ><img
             class="login_button_img"
