@@ -1,8 +1,9 @@
 <template>
   <div class="sidebar">
     <ul class="menu p-4 w-full text-base">
+      <li class="menu-title opacity-70">MENU</li>
       <li v-for="item in list">
-        <router-link class="menu-title cursor-pointer" :to="item.href">
+        <router-link class="cursor-pointer menu-links" :to="item.href">
           {{ item.text }}
         </router-link>
       </li>
@@ -14,6 +15,7 @@
 const list = [
   { text: 'Home', href: '/' },
   { text: 'Bot', href: '/setup' },
+  { text: 'Dashboard', href: '/dashboard' },
 ];
 </script>
 
@@ -23,10 +25,18 @@ const list = [
   li {
     margin-top: 5px;
     .router-link-active {
-      background-color: #e5e5e5;
+      color: #5A6ACF;
+      background-color: #c9d0ff;
     }
-    &:hover {
-      background-color: #e5e5e5;
+    .menu-links {
+      padding: 12px 20px;
+      border-radius: 5px;
+      &:hover {
+        color: #5A6ACF;
+      }
+      &:active {
+        background-color: #c9d0ff;
+      }  
     }
   }
 }

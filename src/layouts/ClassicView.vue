@@ -1,10 +1,10 @@
 <template>
   <!-- <Breadcrumbs :list="list" /> -->
-  <div class="h-screen">
+  <div class="h-screen overflow-hidden">
     <Header :picture="userInfoStore.picture" />
     <div class="flex view-container">
       <SideBar />
-      <div class="content">
+      <div class="content overflow-auto">
         <LoadingPage />
         <slot />
       </div>
@@ -40,9 +40,7 @@ onBeforeMount(async () => {
   }
 });
 
-defineProps<{
-  list: any[];
-}>();
+
 </script>
 
 <style scoped lang="scss">
@@ -59,10 +57,10 @@ defineProps<{
   padding-left: 20px;
 }
 .content {
-  width: 85vw;
+  width: 80vw;
 }
 .sidebar {
-  width: 15vw;
+  width: 20vw;
   background-color: #f5f5f5;
   z-index: 9;
 }

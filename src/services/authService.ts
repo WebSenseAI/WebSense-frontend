@@ -13,7 +13,7 @@ export async function fetchUserInfo() {
         console.error('Error fetching user information:', error);
     } finally {
         login(data.value?.id || null);
-        return normalizedUser(data.value.user_metadata);
+        return normalizedUser(data.value?.user_metadata);
     }
 };
 

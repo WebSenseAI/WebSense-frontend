@@ -1,8 +1,8 @@
 <template>
   <div class="top-0 left-0 navbar bg-base-100 border-b border-base-200">
     <div class="flex-1">
-      <router-link class="m-0 p-1 w-52" to="/">
-        <img src="@/assets/logos/websense_logo.svg" alt="Chatbot" />
+      <router-link class=" mt-4 w-32" to="/">
+        <img src="@/assets/logos/WTextLogo.svg" alt="Chatbot" />
       </router-link>
     </div>
     <div class="flex-none">
