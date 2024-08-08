@@ -32,10 +32,10 @@ export function useAxios(baseURL: string,): { get: (url: string) => Promise<any>
         }
     }
 
-    async function post(url: string, data: any): Promise<any> {
+    async function post(url: string, dataParameters: any): Promise<any> {
         loading.value = true;
         try {
-            const response: AxiosResponse<any> = await instance.post(url, data);
+            const response: AxiosResponse<any> = await instance.post(url, dataParameters);
             data.value = response.data;
             error.value = null;
         } catch (err) {

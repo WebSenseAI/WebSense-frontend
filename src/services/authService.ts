@@ -17,10 +17,19 @@ export async function fetchUserInfo() {
     }
 };
 
-export async function isLoggedIn(): Promise<boolean> {
-    await fetchUserInfo()
-    const sessionInfo = sessionStorage.getItem(AUTH_TOKEN_KEY);
-    return !!sessionInfo && sessionInfo !== 'null';
+export async function isLoggedIn() {
+    try {
+        await get(`${SERVER_URL}/auth/status`);
+        console.log(data.value);
+        const { authenticated } = data.value;
+        if (authenticated) {
+            return true;
+        } else {
+            return false;
+        }
+    } catch (error: any) {
+        console.error('Error checking authentication status:', error.response?.data || error.message);
+    }
 }
 
 export function login(token: string): void {

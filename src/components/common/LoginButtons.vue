@@ -1,8 +1,8 @@
 <template>
   <div class="google_button__container">
-    <a
+    <p
       class="login_button flex"
-      :href="`${SERVER_URL}/auth/register/oauth/google`"
+      @click="loginWithService('github')"
     >
       <span
         ><img
@@ -11,10 +11,10 @@
           alt=""
       /></span>
       Login with Google
-    </a>
-    <a
+    </p>
+    <p
       class="login_button flex"
-      :href="`${SERVER_URL}/auth/register/oauth/github`"
+      @click="loginWithService('github')"
     >
       <span
         ><img
@@ -23,12 +23,21 @@
           alt=""
       /></span>
       Login with Github
-    </a>
+    </p>
   </div>
 </template>
 
 <script setup lang="ts">
 import { SERVER_URL } from '@/utils/url';
+import { useAxios } from '@/composables/axios';
+
+const { post, data } = useAxios(SERVER_URL);
+
+const loginWithService = async (service: string) => {
+  await post(`${SERVER_URL}/auth/register/oauth/${service}`, {});
+  const { url } = data.value;
+  window.location.href = url;
+};
 </script>
 
 <style lang="scss" scoped>
