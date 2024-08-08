@@ -5,7 +5,6 @@
     <div class="flex flex-col gap-3">
       <p class=" ml-10">Whats new in WebSense.AI </p>
       <Alert />
-      <Alert />
     </div>
   </ClassicView>
   <web-sense v-if="botInfoStore.id" :id="botInfoStore.id" />

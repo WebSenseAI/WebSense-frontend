@@ -6,10 +6,12 @@ import ChartTwo from '@/components/Charts/ChartTwo.vue';
 import MapOne from '@/components/Maps/MapOne.vue';
 import TableOne from '@/components/Tables/TableOne.vue';
 import ClassicView from '@/layouts/ClassicView.vue';
+import DemoAllert from '@/components/common/DemoAllert.vue';
 </script>
 
 <template>
   <ClassicView>
+    <DemoAllert/>
     <div class="p-5">
       <div
         class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5"
