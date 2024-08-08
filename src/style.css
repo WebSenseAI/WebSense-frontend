@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 
-@layer base {
-    body {
-        @apply relative z-1 bg-whiten font-satoshi text-base font-normal text-body dark:text-bodydark dark:bg-boxdark-2;
-    }
-}
-
 @layer components {
 }
 
