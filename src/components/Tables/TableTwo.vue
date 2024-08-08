@@ -1,11 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import ProductOne from '@/assets/images/product/product-01.png'
-import ProductTwo from '@/assets/images/product/product-02.png'
-import ProductThree from '@/assets/images/product/product-03.png'
-import ProductFour from '@/assets/images/product/product-04.png'
-
 const products = ref([
   {
     id: 1,
@@ -14,7 +9,6 @@ const products = ref([
     price: 269,
     sold: 22,
     profit: 45,
-    imageSrc: ProductOne
   },
   {
     id: 2,
@@ -23,7 +17,6 @@ const products = ref([
     price: 546,
     sold: 34,
     profit: 125,
-    imageSrc: ProductTwo
   },
   {
     id: 3,
@@ -32,7 +25,6 @@ const products = ref([
     price: 443,
     sold: 64,
     profit: 247,
-    imageSrc: ProductThree
   },
   {
     id: 4,
@@ -41,7 +33,6 @@ const products = ref([
     price: 499,
     sold: 72,
     profit: 103,
-    imageSrc: ProductFour
   }
 ])
 </script>
@@ -83,9 +74,6 @@ const products = ref([
     >
       <div class="col-span-3 flex items-center">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-          <div class="h-12.5 w-15 rounded-md">
-            <img :src="product.imageSrc" :alt="`Product: ${product.name}`" />
-          </div>
           <p class="text-sm font-medium text-black dark:text-white">{{ product.name }}</p>
         </div>
       </div>

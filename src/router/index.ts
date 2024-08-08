@@ -4,7 +4,6 @@ import LoginView from '@/views/LoginView.vue';
 import SetupView from '@/views/SetupView.vue';
 import HowToUseView from '@/views/HowToUseView.vue';
 import DashboardView from '@/views/DashboardView.vue';
-import NewViewTest from '@/views/NewViewTest.vue';
 import { isLoggedIn } from '@/services/authService';
 
 const routes = [
