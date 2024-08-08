@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "start": "npx http-server -P http://127.0.0.1:${PORT} ./dist"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@luisbeqja/web-sense": "^0.0.19",
