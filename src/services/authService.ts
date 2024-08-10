@@ -21,6 +21,7 @@ export async function isLoggedIn() {
     const urlParams = new URLSearchParams(window.location.search);
     const accessToken = urlParams.get('access_token');
     console.log('accessToken', accessToken);
+    return true;
 /*     if (accessToken) {
         localStorage.setItem('access_token', accessToken);
         // Eemove the token from the URL
