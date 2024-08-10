@@ -37,7 +37,7 @@ const loginWithService = async (service: string) => {
   await get(`${SERVER_URL}/auth/register/oauth/${service}`);
   const { url } = data.value;
   console.log('URL', url);
-  window.location.href = url;
+  //window.location.href = url;
 };
 </script>
 
