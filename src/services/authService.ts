@@ -31,9 +31,14 @@ export async function isLoggedIn() {
         await get(`${SERVER_URL}/auth/status/${localStorage.getItem('access_token')}`);
         const { authenticated } = data.value;
 
-        if (authenticated) {
+        console.log('authenticated', authenticated);
+
+        return true;
+/*         if (authenticated) {
             return true;
-        }
+        } else {
+            return false;
+        } */
     } catch (error: any) {
         console.error('Error checking authentication status:', error.response?.data || error.message);
     } 
