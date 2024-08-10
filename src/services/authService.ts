@@ -18,9 +18,19 @@ export async function fetchUserInfo() {
 };
 
 export async function isLoggedIn() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get('access_token');
+
+    if (accessToken) {
+        localStorage.setItem('access_token', accessToken);
+        // Eemove the token from the URL
+        window.history.state.current = '/';
+        console.log('Access token:', window.history);
+        return true;
+    }
+
     try {
-        await get(`${SERVER_URL}/auth/status`);
-        console.log(data.value);
+        await get(`${SERVER_URL}/auth/status/${localStorage.getItem('access_token')}`);
         const { authenticated } = data.value;
         if (authenticated) {
             return true;

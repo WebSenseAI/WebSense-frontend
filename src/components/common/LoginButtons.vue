@@ -2,7 +2,7 @@
   <div class="google_button__container">
     <p
       class="login_button flex"
-      @click="loginWithService('github')"
+      @click="loginWithService('google')"
     >
       <span
         ><img
