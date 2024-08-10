@@ -31,12 +31,12 @@
 import { SERVER_URL } from '@/utils/url';
 import { useAxios } from '@/composables/axios';
 
-const { get, data } = useAxios(SERVER_URL);
+const { post } = useAxios(SERVER_URL);
 
 const loginWithService = async (service: string) => {
-  await get(`${SERVER_URL}/auth/register/oauth/${service}`);
-  const { url } = data.value;
-  window.location.href = url;
+  await post(`${SERVER_URL}/auth/register/oauth/${service}`, {});
+/*   const { url } = data.value;
+  window.location.href = url; */
 };
 </script>
 
