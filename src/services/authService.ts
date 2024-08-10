@@ -25,11 +25,10 @@ export async function isLoggedIn() {
         localStorage.setItem('access_token', accessToken);
         // Eemove the token from the URL
         window.history.state.current = '/';
-        console.log('Access token:', window.history);
         return true;
     }
 
-    try {
+/*     try {
         await get(`${SERVER_URL}/auth/status/${localStorage.getItem('access_token')}`);
         const { authenticated } = data.value;
         if (authenticated) {
@@ -39,7 +38,7 @@ export async function isLoggedIn() {
         }
     } catch (error: any) {
         console.error('Error checking authentication status:', error.response?.data || error.message);
-    }
+    } */
 }
 
 export function login(token: string): void {
