@@ -20,7 +20,6 @@ export async function fetchUserInfo() {
 export async function isLoggedIn() {
     const urlParams = new URLSearchParams(window.location.search);
     const accessToken = urlParams.get('access_token');
-    console.log('accessToken', accessToken);
 
     if (accessToken) {
         localStorage.setItem('access_token', accessToken);
@@ -30,15 +29,11 @@ export async function isLoggedIn() {
     try {
         await get(`${SERVER_URL}/auth/status/${localStorage.getItem('access_token')}`);
         const { authenticated } = data.value;
-
-        console.log('authenticated', authenticated);
-
-        return true;
-/*         if (authenticated) {
+         if (authenticated) {
             return true;
         } else {
             return false;
-        } */
+        } 
     } catch (error: any) {
         console.error('Error checking authentication status:', error.response?.data || error.message);
     } 
@@ -50,13 +45,12 @@ export function login(token: string): void {
 }
 
 export async function logout(): Promise<void> {
-    console.log('logout');
     try {
         await get('/auth/logout');
     } catch (error) {
         console.error('Error fetching user information:', error);
     } finally {
-        sessionStorage.removeItem(AUTH_TOKEN_KEY);
+        localStorage.removeItem('access_token');
         window.location.reload();
     }
 }
