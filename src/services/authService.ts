@@ -21,15 +21,13 @@ export async function isLoggedIn() {
     const urlParams = new URLSearchParams(window.location.search);
     const accessToken = urlParams.get('access_token');
     console.log('accessToken', accessToken);
-    return true;
-/*     if (accessToken) {
-        localStorage.setItem('access_token', accessToken);
-        // Eemove the token from the URL
-        window.history.state.current = '/';
-        return true;
-    } */
 
-/*     try {
+    if (accessToken) {
+        localStorage.setItem('access_token', accessToken);
+        return true;
+    } 
+
+    try {
         await get(`${SERVER_URL}/auth/status/${localStorage.getItem('access_token')}`);
         const { authenticated } = data.value;
         if (authenticated) {
@@ -39,7 +37,7 @@ export async function isLoggedIn() {
         }
     } catch (error: any) {
         console.error('Error checking authentication status:', error.response?.data || error.message);
-    } */
+    } 
 }
 
 export function login(token: string): void {
