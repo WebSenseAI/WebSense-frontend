@@ -20,13 +20,13 @@ export async function fetchUserInfo() {
 export async function isLoggedIn() {
     const urlParams = new URLSearchParams(window.location.search);
     const accessToken = urlParams.get('access_token');
-
-    if (accessToken) {
+    console.log('accessToken', accessToken);
+/*     if (accessToken) {
         localStorage.setItem('access_token', accessToken);
         // Eemove the token from the URL
         window.history.state.current = '/';
         return true;
-    }
+    } */
 
 /*     try {
         await get(`${SERVER_URL}/auth/status/${localStorage.getItem('access_token')}`);
