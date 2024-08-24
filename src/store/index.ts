@@ -4,7 +4,7 @@ import { defineStore } from 'pinia';
 export const useUserInfoStore = defineStore('userInfoStore', {
     state: () => ({
         picture: "",
-        name: "",
+        user_name: "",
         email: "",
         full_name: "",
         phone_verified: "",

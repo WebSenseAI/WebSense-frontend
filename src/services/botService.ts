@@ -1,22 +1,19 @@
-import { useAxios } from '@/composables/axios';
-import { SERVER_URL } from '@/utils/url';
-
-const { post, get, remove, put, data } = useAxios(SERVER_URL);
+import { getServer, removeServer, postServer, putServer } from './apiService';
 
 export async function createChatBot(botInfo: any, userId: string) {
+    const requestData = {
+        name: botInfo.name,
+        website: botInfo.website,
+        description: botInfo.description,
+        message: botInfo.message,
+        key: botInfo.key,
+        user_id: userId,
+    };
     try {
-        await post('/api/bot/new', {
-            name: botInfo.name,
-            website: botInfo.website,
-            description: botInfo.description,
-            message: botInfo.message,
-            key: botInfo.key,
-            user_id: userId,
-        });
+        const response = await postServer('/api/bot/new', requestData);
+        return response?.data;
     } catch (error) {
         console.error('Error creating chat bot:', error);
-    } finally {
-        return data.value;
     }
 }
 
@@ -31,31 +28,31 @@ export async function createChatBot(botInfo: any, userId: string) {
 // }
 export async function deleteBot() {
     try {
-        await remove(`/api/bot/remove`);
+        const response = await removeServer(`/api/bot/remove`);
+        return response?.data;
     } catch (error) {
         console.error('Error deleting chat bot:', error);
-    } finally {
-        return true;
+        return null;
     }
 }
 
 export async function editBot(botId: string, botInfo: any) {
     try {
-        await put(`/api/bot/edit/${botId}`, botInfo);
+        const response = await putServer(`/api/bot/edit/${botId}`, botInfo);
+        return response?.data;
     } catch (error) {
         console.error('Error editing chat bot:', error);
-    } finally {
-        return data.value;
+        return null;
     }
 }
 
 export async function fetchBotInfo() {
     try {
-        await get(`/api/bot/info`);
+        const response = await getServer(`/api/bot/info`);
+        return response?.data;
     } catch (error) {
         console.error('Error fetching chat bot information:', error);
-    } finally {
-        return data.value;
+        return null;
     }
 }
 

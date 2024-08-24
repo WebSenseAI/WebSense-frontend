@@ -28,11 +28,9 @@
 </template>
 
 <script setup lang="ts">
-import { SERVER_URL } from '@/utils/url';
-import { useAxios } from '@/composables/axios';
 import { loginWithOauth } from '@/services/loginService';
 import { supabase } from '@/services/supabaseService';
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import {useRouter} from 'vue-router';
 
 const router = useRouter();
@@ -44,7 +42,6 @@ onMounted(async () => {
       console.error('Error during OAuth redirect handling:', error.message);
     } else {
       console.log('Session stored:', data.session);
-      session.value = data.session;
       router.push('/home'); // Redirect after handling
     }
   }

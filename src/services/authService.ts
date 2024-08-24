@@ -1,22 +1,9 @@
-import { useAxios } from '@/composables/axios';
-import { normalizedUser } from '@/utils/normalizers/userNoramlizer';
-import { SERVER_URL } from '@/utils/url';
 import { supabase } from './supabaseService';
 
 const AUTH_TOKEN_KEY = 'sessionUser';
 
-// const { get, data } = useAxios(SERVER_URL);
-
 export async function fetchUserInfo() {
-    // try {
-    //     await get('/api/userinfo');
-    // } catch (error) {
-    //     console.error('Error fetching user information:', error);
-    // } finally {
-    //     login(data.value?.id || null);
-    //     return normalizedUser(data.value?.user_metadata);
-    // }
-    return (await supabase.auth.getSession()).data.session?.user; 
+    return (await supabase.auth.getSession()).data.session?.user.user_metadata; 
 };
 
 export async function isLoggedIn() {
