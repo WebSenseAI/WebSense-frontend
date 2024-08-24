@@ -42,7 +42,7 @@ onMounted(async () => {
       console.error('Error during OAuth redirect handling:', error.message);
     } else {
       console.log('Session stored:', data.session);
-      router.push('/home'); // Redirect after handling
+      router.push('/setup'); // Redirect after handling
     }
   }
 })
