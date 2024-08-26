@@ -11,7 +11,7 @@ export async function createChatBot(botInfo: any, userId: string) {
     };
     try {
         const response = await postServer('/api/bot/new', requestData);
-        return response?.data;
+        return response;
     } catch (error) {
         console.error('Error creating chat bot:', error);
     }
@@ -29,7 +29,7 @@ export async function createChatBot(botInfo: any, userId: string) {
 export async function deleteBot() {
     try {
         const response = await removeServer(`/api/bot/remove`);
-        return response?.data;
+        return response;
     } catch (error) {
         console.error('Error deleting chat bot:', error);
         return null;
@@ -39,7 +39,7 @@ export async function deleteBot() {
 export async function editBot(botId: string, botInfo: any) {
     try {
         const response = await putServer(`/api/bot/edit/${botId}`, botInfo);
-        return response?.data;
+        return response;
     } catch (error) {
         console.error('Error editing chat bot:', error);
         return null;
@@ -49,7 +49,7 @@ export async function editBot(botId: string, botInfo: any) {
 export async function fetchBotInfo() {
     try {
         const response = await getServer(`/api/bot/info`);
-        return response?.data;
+        return response;
     } catch (error) {
         console.error('Error fetching chat bot information:', error);
         return null;
