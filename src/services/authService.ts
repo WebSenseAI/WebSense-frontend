@@ -1,44 +1,16 @@
-import { useAxios } from '@/composables/axios';
-import { normalizedUser } from '@/utils/normalizers/userNoramlizer';
-import { SERVER_URL } from '@/utils/url';
+import { supabase } from './supabaseService';
 
 const AUTH_TOKEN_KEY = 'sessionUser';
 
-const { get, data } = useAxios(SERVER_URL);
-
 export async function fetchUserInfo() {
-    try {
-        await get('/api/userinfo');
-    } catch (error) {
-        console.error('Error fetching user information:', error);
-    } finally {
-        login(data.value?.id || null);
-        return normalizedUser(data.value?.user_metadata);
-    }
+    return (await supabase.auth.getSession()).data.session?.user.user_metadata; 
 };
 
 export async function isLoggedIn() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const accessToken = urlParams.get('access_token');
-
-    if (accessToken) {
-        localStorage.setItem('access_token', accessToken);
-        return true;
-    } 
-
-    try {
-        await get(`${SERVER_URL}/auth/status/${localStorage.getItem('access_token')}`);
-        const { authenticated } = data.value;
-         if (authenticated) {
-            return true;
-        } else {
-            return false;
-        } 
-    } catch (error: any) {
-        console.error('Error checking authentication status:', error.response?.data || error.message);
-    } 
+    return (await supabase.auth.getSession()).data.session !== null   
 }
 
+// NOTE TO @LUIS: supabase cli already deals with storing the session token in the local storage 
 export function login(token: string): void {
     // Store the authentication token in browser storage
     sessionStorage.setItem(AUTH_TOKEN_KEY, token);
@@ -46,7 +18,7 @@ export function login(token: string): void {
 
 export async function logout(): Promise<void> {
     try {
-        await get('/auth/logout');
+        await supabase.auth.signOut();
     } catch (error) {
         console.error('Error fetching user information:', error);
     } finally {

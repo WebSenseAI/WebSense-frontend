@@ -1,7 +1,7 @@
 <template>
   <ClassicView :list="list">
     <CreateBotHome v-if="botInfoStore.id === ''"/>
-    <WelcomeHome v-else :user-name="userInfoStore.name"/>
+    <WelcomeHome v-else :user-name="userInfoStore.user_name"/>
     <div class="flex flex-col gap-3">
       <p class=" ml-10">Whats new in WebSense.AI </p>
       <Alert />

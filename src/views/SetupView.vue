@@ -5,7 +5,7 @@
         <div class="flex flex-col gap-4">
           <h1 class="text-3xl font-bold">
             Welcome
-            <span class="uppercase">{{ userInfoStore.name }}</span> 👋
+            <span class="uppercase">{{ userInfoStore.user_name }}</span> 👋
             <br />
             <span class="text-xl font-thin"
               >here you can manage your chatbot</span

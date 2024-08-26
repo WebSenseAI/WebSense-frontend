@@ -1,16 +1,22 @@
 import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 import { ref, Ref } from 'vue';
 
+type Headers = {
+    'Content-Type': string;
+    'Authorization': string;
+};
+
 interface AxiosState {
     loading: Ref<boolean>;
     error: Ref<string | null>;
     data: Ref<any>;
 }
 
-export function useAxios(baseURL: string,): { get: (url: string) => Promise<any>, post: (url: string, data: any) => Promise<any>, remove: (url: string, data?: any) => Promise<any>, put: (url: string, data: any) => Promise<any> } & AxiosState {
+export function useAxios(baseURL: string, baseHeaders: Headers): { get: (url: string) => Promise<any>, post: (url: string, data: any) => Promise<any>, remove: (url: string, data?: any) => Promise<any>, put: (url: string, data: any) => Promise<any> } & AxiosState {
     const instance: AxiosInstance = axios.create({
         baseURL,
         timeout: 5000,
+        headers: baseHeaders,
     });
 
     const error: Ref<string | null> = ref(null);

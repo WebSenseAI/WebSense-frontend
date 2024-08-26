@@ -2,7 +2,7 @@
   <div class="google_button__container">
     <p
       class="login_button flex"
-      @click="loginWithService('google')"
+      @click="loginWithOauth('google')"
     >
       <span
         ><img
@@ -14,7 +14,7 @@
     </p>
     <p
       class="login_button flex"
-      @click="loginWithService('github')"
+      @click="loginWithOauth('github')"
     >
       <span
         ><img
@@ -28,17 +28,25 @@
 </template>
 
 <script setup lang="ts">
-import { SERVER_URL } from '@/utils/url';
-import { useAxios } from '@/composables/axios';
+import { loginWithOauth } from '@/services/loginService';
+import { supabase } from '@/services/supabaseService';
+import { onMounted } from 'vue';
+import {useRouter} from 'vue-router';
 
-const { get, data } = useAxios(SERVER_URL);
+const router = useRouter();
 
-const loginWithService = async (service: string) => {
-  await get(`${SERVER_URL}/auth/register/oauth/${service}`);
-  const { url } = data.value;
-  console.log('URL', url);
-  window.location.href = url;
-};
+onMounted(async () => {
+  if (window.location.hash) {
+    const { data, error } = await supabase.auth.getSession();
+    if (error) {
+      console.error('Error during OAuth redirect handling:', error.message);
+    } else {
+      console.log('Session stored:', data.session);
+      router.push('/setup'); // Redirect after handling
+    }
+  }
+})
+
 </script>
 
 <style lang="scss" scoped>
