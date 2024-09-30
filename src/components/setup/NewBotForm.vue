@@ -51,10 +51,9 @@
 
 <script setup lang="ts">
 import NewBotLoading from '@/components/setup/NewBotLoading.vue';
-import { onUnmounted, ref } from 'vue';
+import {  ref } from 'vue';
 import { createChatBot } from '@/services/botService';
 import { useUserInfoStore } from '@/store/index';
-import { SERVER_URL } from '@/utils/url';
 const userInfoStore = useUserInfoStore();
 
 const assistantName = ref('');
