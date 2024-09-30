@@ -1,4 +1,9 @@
 <template>
+  <span class="text-base font-thin text-rose-900">
+    As of today, our system can handle websites with up to 100 pages. If your
+    site contains more than 100 pages, the bot will only process and learn from
+    the first 100 pages listed in your sitemap.
+  </span>
   <form
     v-if="!loading"
     class="flex flex-col gap-4"
@@ -45,7 +50,6 @@
 </template>
 
 <script setup lang="ts">
-import { io } from 'socket.io-client';
 import NewBotLoading from '@/components/setup/NewBotLoading.vue';
 import { onUnmounted, ref } from 'vue';
 import { createChatBot } from '@/services/botService';
@@ -60,16 +64,6 @@ const websiteDescription = ref('');
 const openAIKey = ref('');
 
 const loading = ref(false);
-
-const socket = io(SERVER_URL);
-
-socket.on('message', (msg) => {
-  console.log('Message received:', msg);
-});
-
-onUnmounted(() => {
-  socket.disconnect();
-});
 
 function handleCreateChatBot() {
   loading.value = true;
@@ -90,7 +84,7 @@ export interface Props {
 }
 const props = withDefaults(defineProps<Props>(), {
   isEdit: false,
-})
+});
 </script>
 
 <style scoped lang="scss"></style>
