@@ -18,7 +18,7 @@
     <div class="w-full stats shadow">
       <div class="stat">
         <div class="stat-title">Total messages</div>
-        <div class="stat-value font-thin">12,413</div>
+        <div class="stat-value font-thin">{{chatStatsBasicStore.count}}</div>
         <!-- TODO: get from API -->
         <div class="stat-desc">532 users have used this bot</div>
       </div>
@@ -43,10 +43,18 @@
 
 <script setup lang="ts">
 import { deleteBot } from '@/services/botService';
-import { useBotInfoStore } from '@/store/index';
+import { getChatCount } from '@/services/chatService';
+import { useBotInfoStore, useChatBasicStatsStore } from '@/store/index';
 import Modal from '@/components/common/Modal.vue';
 import NewBotForm from '@/components/setup/NewBotForm.vue';
+import { onBeforeMount } from 'vue';
 const botInfoStore = useBotInfoStore();
+const chatStatsBasicStore = useChatBasicStatsStore();
+onBeforeMount(async () => {
+  if (botInfoStore.botExists) {
+    chatStatsBasicStore.setBasicStats(await getChatCount());
+  }
+})
 
 function clickDeleteBot() {
   if (confirm('Are you sure you want to delete this bot?')) {

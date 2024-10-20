@@ -45,3 +45,15 @@ export const useBotInfoStore = defineStore('botInfoStore', {
         },
     }
 });
+
+export const useChatBasicStatsStore = defineStore('chatBasicStatsStore', {
+    state: () => ({
+        data : [],
+        count : 0
+    }),
+    actions: {
+        setBasicStats(chatBasic: any) {
+            this.$state = chatBasic;
+        }
+    },
+})
