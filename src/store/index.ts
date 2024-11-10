@@ -49,7 +49,8 @@ export const useBotInfoStore = defineStore('botInfoStore', {
 export const useChatBasicStatsStore = defineStore('chatBasicStatsStore', {
     state: () => ({
         data : [],
-        count : 0
+        chat_count : 0,
+        user_count : 0
     }),
     actions: {
         setBasicStats(chatBasic: any) {

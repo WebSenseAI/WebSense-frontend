@@ -14,13 +14,13 @@
   </div>
   <div class="divider">Analitycs</div>
   <div class="indicator w-full">
-    <span class="indicator-item badge badge-primary">12 new users</span>
+    <!-- TODO: new user logic needs to be implemented, we may move this into the comprehensive stats page-->
+    <!-- <span class="indicator-item badge badge-primary">12 new users</span> -->
     <div class="w-full stats shadow">
       <div class="stat">
         <div class="stat-title">Total messages</div>
-        <div class="stat-value font-thin">{{chatStatsBasicStore.count}}</div>
-        <!-- TODO: get from API -->
-        <div class="stat-desc">532 users have used this bot</div>
+        <div class="stat-value font-thin">{{chatStatsBasicStore.chat_count}}</div>
+        <div class="stat-desc">{{chatStatsBasicStore.user_count}} users have used this bot</div>
       </div>
     </div>
   </div>
