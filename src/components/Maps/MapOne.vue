@@ -82,7 +82,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
       tooltip.style("top", (event.pageY - 10) + "px")
              .style("left", (event.pageX + 10) + "px");
     })
-    .on("mouseout", function (event:any, d:any) {
+    .on("mouseout", function (event:any) {
       // Hide tooltip and reset color
       tooltip.style("display", "none");
       d3.select(event.target).attr("fill", (d: any) => {
