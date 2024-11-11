@@ -7,6 +7,29 @@ import MapOne from '@/components/Maps/MapOne.vue';
 import TableOne from '@/components/Tables/TableOne.vue';
 import ClassicView from '@/layouts/ClassicView.vue';
 import DemoAllert from '@/components/common/DemoAllert.vue';
+
+import { onBeforeMount } from 'vue';
+import { useBotInfoStore, useChatComprehensiveStatsStore, useUserInfoStore } from '@/store/index';
+import { getChatStats } from '@/services/chatService';
+import { fetchBotInfo } from '@/services/botService';
+import { fetchUserInfo } from '@/services/authService';
+
+const botInfoStore = useBotInfoStore();
+const userInfoStore = useUserInfoStore();
+
+const chatStatsComprehensiveStore = useChatComprehensiveStatsStore();
+onBeforeMount(async () => {
+  if (userInfoStore.id === '') {
+      const userInfo = await fetchUserInfo();
+      userInfoStore.setUserInfo(userInfo);
+    }
+  if (!botInfoStore.botExists) {
+    const botInfo = await fetchBotInfo();
+    botInfoStore.setBotInfo(botInfo);
+  }
+  chatStatsComprehensiveStore.setComprehensiveStats(await getChatStats());
+})
+
 </script>
 
 <template>
@@ -16,7 +39,7 @@ import DemoAllert from '@/components/common/DemoAllert.vue';
       <div
         class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5"
       >
-        <DataStatsOne />
+        <DataStatsOne :chat-stats-comprehensive-store="chatStatsComprehensiveStore" />
       </div>
 
       <div
@@ -25,7 +48,7 @@ import DemoAllert from '@/components/common/DemoAllert.vue';
         <ChartOne />
         <ChartTwo />
         <ChartThree />
-        <MapOne />
+        <MapOne :chat-stats-comprehensive-store="chatStatsComprehensiveStore"/>
         <div class="col-span-12 xl:col-span-8">
           <TableOne />
         </div>

@@ -58,3 +58,18 @@ export const useChatBasicStatsStore = defineStore('chatBasicStatsStore', {
         }
     },
 })
+
+export const useChatComprehensiveStatsStore = defineStore('chatComprehensiveStatsStore', {
+    state: () => ({
+        data : [],
+        chat_count : 0,
+        user_count : 0,
+        countries : [],
+        country_count : 0
+    }),
+    actions: {
+        setComprehensiveStats(chatComprehensive: any) {
+            this.$state = chatComprehensive;
+        }
+    }
+})

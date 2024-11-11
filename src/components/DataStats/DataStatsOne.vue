@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
+const props = defineProps<{
+  chatStatsComprehensiveStore: any
+}>();
 
 const cardItems = ref([
   {
@@ -9,7 +12,7 @@ const cardItems = ref([
         </svg>
         `,
     title: 'Total messages',
-    total: '3.456K',
+    total: 0,
     growthRate: 0.43
   },
   {
@@ -40,6 +43,14 @@ const cardItems = ref([
     growthRate: -0.95
   }
 ])
+watchEffect(() => {
+  if (props.chatStatsComprehensiveStore) {
+    cardItems.value[0].total = props.chatStatsComprehensiveStore.chat_count;
+    cardItems.value[1].total = props.chatStatsComprehensiveStore.user_count;
+    cardItems.value[2].total = 0;   // TODO
+    cardItems.value[3].total = props.chatStatsComprehensiveStore.country_count;
+  }
+});
 </script>
 
 <template>

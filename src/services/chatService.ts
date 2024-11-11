@@ -10,3 +10,13 @@ export async function getChatCount() {
         return null;
     }
 }
+
+export async function getChatStats() {
+    try {
+        const response = await getServer('/api/statistics/comprehensive');
+        return response;
+    } catch (error) {
+        console.error('Error fetching comprehensive statistics:', error);
+        return null;
+    }
+}
