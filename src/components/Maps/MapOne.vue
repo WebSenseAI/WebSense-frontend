@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import * as d3 from 'd3';
-import { onMounted, watch, watchEffect } from 'vue';
+import { watchEffect } from 'vue';
 import { getCountryNameByCode } from '@/utils/countries/countryConverter';
 
 const props = defineProps<{
@@ -68,24 +68,24 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
       // Match country name in GeoJSON with countryOccurrences
       return countryOccurrences[d.properties.name] ? "#3056D3" : '#C8D0D8';
     })
-    .on("mouseover", function (event, d) {
+    .on("mouseover", function (event:any, d:any) {
       const countryName = d.properties.name;
       const occurrence = countryOccurrences[countryName];
 
       // Show tooltip with country name and occurrence
       tooltip.style("display", "block")
              .html(`<h5>${countryName}</h5><p>Messages: ${occurrence || 0}</p>`);
-      d3.select(this).attr("fill", "#a9a9a9"); // Hover color
+      d3.select(event.target).attr("fill", "#a9a9a9"); // Hover color
     })
-    .on("mousemove", function (event) {
+    .on("mousemove", function (event:any) {
       // Position tooltip near the cursor
       tooltip.style("top", (event.pageY - 10) + "px")
              .style("left", (event.pageX + 10) + "px");
     })
-    .on("mouseout", function () {
+    .on("mouseout", function (event:any, d:any) {
       // Hide tooltip and reset color
       tooltip.style("display", "none");
-      d3.select(this).attr("fill", (d: any) => {
+      d3.select(event.target).attr("fill", (d: any) => {
         return countryOccurrences[d.properties.name] ? "#3056D3" : '#C8D0D8';
       });
     });
@@ -94,7 +94,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 // Set up zoom behavior
 const zoom = d3.zoom()
   .scaleExtent([1, 8]) // Limit zoom levels
-  .on("zoom", (event) => {
+  .on("zoom", (event:any) => {
     g.attr("transform", event.transform); // Apply zoom transform to the group
   });
 
