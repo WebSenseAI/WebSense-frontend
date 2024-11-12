@@ -50,7 +50,7 @@ const projection = d3.geoMercator()
   .scale(130)
   .center([0, 30]) // Adjust center to position North America lower
   .translate([480, 300]);
-const path = d3.geoPath().projection(projection);
+const path:any = d3.geoPath().projection(projection);
 
 // Load GeoJSON world data
 d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson").then((worldData: any) => {
@@ -92,7 +92,7 @@ d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/w
 });
 
 // Set up zoom behavior
-const zoom = d3.zoom()
+const zoom:any = d3.zoom()
   .scaleExtent([1, 8]) // Limit zoom levels
   .on("zoom", (event:any) => {
     g.attr("transform", event.transform); // Apply zoom transform to the group
