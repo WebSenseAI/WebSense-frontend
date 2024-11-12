@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watchEffect,reactive } from 'vue'
 // @ts-ignore
 import VueApexCharts from 'vue3-apexcharts'
+const props = defineProps<{
+  chatStatsComprehensiveStore: any;
+}>();
 
-const chartData = {
-  series: [65, 34, 45, 12],
-  labels: ['Afternoon', 'Morning', 'Evening', 'Late nigth']
-}
+const chartData = reactive({
+  series: [0, 0, 0, 0],
+  labels: ['Morning', 'Afternoon', 'Evening', 'Late Night'],
+  percentages: [0,0,0,0]
+});
 
 const chart = ref(null)
 
@@ -43,6 +47,26 @@ const apexOptions = {
     }
   ]
 }
+
+
+watchEffect(()=>{
+  const time_periods = {...props.chatStatsComprehensiveStore.time_periods};
+  
+  chartData.series = [
+    time_periods["Morning"],
+    time_periods["Afternoon"],
+    time_periods["Evening"],
+    time_periods["Late Night"]
+  ]
+  const total = props.chatStatsComprehensiveStore.chat_count;
+  chartData.percentages = [
+    total ? Math.round(time_periods["Morning"] / total * 1000) / 10 : 0,
+    total ? Math.round(time_periods["Afternoon"] / total * 1000) /10 : 0,
+    total ? Math.round(time_periods["Evening"] / total * 1000) /10 : 0,
+    total ? Math.round(time_periods["Late Night"] / total * 1000) / 10 : 0
+  ]
+})
+
 </script>
 
 <template>
@@ -68,21 +92,22 @@ const apexOptions = {
       </div>
     </div>
     <div class="-mx-8 flex flex-wrap items-center justify-center gap-y-3">
-      <div class="w-full px-8 sm:w-1/2">
-        <div class="flex w-full items-center">
-          <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-primary"></span>
-          <p class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-            <span> Afternoon </span>
-            <span> 65% </span>
-          </p>
-        </div>
-      </div>
+     
       <div class="w-full px-8 sm:w-1/2">
         <div class="flex w-full items-center">
           <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#6577F3]"></span>
           <p class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
             <span> Morning </span>
-            <span> 34% </span>
+            <span> {{chartData.percentages[0]}}% </span>
+          </p>
+        </div>
+      </div>
+      <div class="w-full px-8 sm:w-1/2">
+        <div class="flex w-full items-center">
+          <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-primary"></span>
+          <p class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
+            <span> Afternoon </span>
+            <span> {{chartData.percentages[1]}}% </span>
           </p>
         </div>
       </div>
@@ -91,7 +116,7 @@ const apexOptions = {
           <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#8FD0EF]"></span>
           <p class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
             <span> Evening </span>
-            <span> 45% </span>
+            <span> {{chartData.percentages[2]}}% </span>
           </p>
         </div>
       </div>
@@ -99,8 +124,8 @@ const apexOptions = {
         <div class="flex w-full items-center">
           <span class="mr-2 block h-3 w-full max-w-3 rounded-full bg-[#0FADCF]"></span>
           <p class="flex w-full justify-between text-sm font-medium text-black dark:text-white">
-            <span> Late nigth </span>
-            <span> 12% </span>
+            <span> Late Night </span>
+            <span> {{chartData.percentages[3]}}% </span>
           </p>
         </div>
       </div>

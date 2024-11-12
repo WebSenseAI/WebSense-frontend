@@ -10,14 +10,12 @@ const props = defineProps<{
 const processMap = async() => {
   const countries = [...props.chatStatsComprehensiveStore.countries];
 
-console.log('countries', countries)
 const countryOccurrences: any = {}
 countries.forEach((element: any) => {
   if (!element.country) {
     return;
   }
   const countryName: string | null = getCountryNameByCode(element.country);
-  console.log('name', countryName)
   if (!countryName) return;
   countryOccurrences[countryName] = element.occurence;
 });

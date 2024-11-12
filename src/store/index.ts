@@ -65,7 +65,13 @@ export const useChatComprehensiveStatsStore = defineStore('chatComprehensiveStat
         chat_count : 0,
         user_count : 0,
         countries : [],
-        country_count : 0
+        country_count : 0,
+        time_periods : {
+            "Morning" : 0,
+            "Afternoon" : 0,
+            "Evening" : 0,
+            "Late Night" : 0
+        }
     }),
     actions: {
         setComprehensiveStats(chatComprehensive: any) {

@@ -47,7 +47,7 @@ onBeforeMount(async () => {
       >
         <ChartOne />
         <ChartTwo />
-        <ChartThree />
+        <ChartThree :chat-stats-comprehensive-store="chatStatsComprehensiveStore" />
         <MapOne :chat-stats-comprehensive-store="chatStatsComprehensiveStore"/>
         <div class="col-span-12 xl:col-span-8">
           <TableOne />
