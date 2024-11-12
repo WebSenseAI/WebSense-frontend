@@ -71,7 +71,8 @@ export const useChatComprehensiveStatsStore = defineStore('chatComprehensiveStat
             "Afternoon" : 0,
             "Evening" : 0,
             "Late Night" : 0
-        }
+        },
+        top_words : []
     }),
     actions: {
         setComprehensiveStats(chatComprehensive: any) {

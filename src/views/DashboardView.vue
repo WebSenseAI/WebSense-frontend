@@ -50,7 +50,7 @@ onBeforeMount(async () => {
         <ChartThree :chat-stats-comprehensive-store="chatStatsComprehensiveStore" />
         <MapOne :chat-stats-comprehensive-store="chatStatsComprehensiveStore"/>
         <div class="col-span-12 xl:col-span-8">
-          <TableOne />
+          <TableOne :chat-stats-comprehensive-store="chatStatsComprehensiveStore" />
         </div>
       </div>
     </div>
