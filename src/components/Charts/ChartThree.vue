@@ -51,14 +51,13 @@ const apexOptions = {
 
 watchEffect(()=>{
   const time_periods = {...props.chatStatsComprehensiveStore.time_periods};
-  
   chartData.series = [
     time_periods["Morning"],
     time_periods["Afternoon"],
     time_periods["Evening"],
     time_periods["Late Night"]
   ]
-  const total = props.chatStatsComprehensiveStore.chat_count;
+  const total = props.chatStatsComprehensiveStore.message_count;
   chartData.percentages = [
     total ? Math.round(time_periods["Morning"] / total * 1000) / 10 : 0,
     total ? Math.round(time_periods["Afternoon"] / total * 1000) /10 : 0,

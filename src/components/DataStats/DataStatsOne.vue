@@ -45,7 +45,7 @@ const cardItems = ref([
 ])
 watchEffect(() => {
   if (props.chatStatsComprehensiveStore) {
-    cardItems.value[0].total = props.chatStatsComprehensiveStore.chat_count;
+    cardItems.value[0].total = props.chatStatsComprehensiveStore.message_count;
     cardItems.value[1].total = props.chatStatsComprehensiveStore.user_count;
     cardItems.value[2].total = 0;   // TODO
     cardItems.value[3].total = props.chatStatsComprehensiveStore.country_count;

@@ -19,7 +19,7 @@
     <div class="w-full stats shadow">
       <div class="stat">
         <div class="stat-title">Total messages</div>
-        <div class="stat-value font-thin">{{chatStatsBasicStore.chat_count}}</div>
+        <div class="stat-value font-thin">{{chatStatsBasicStore.message_count}}</div>
         <div class="stat-desc">{{chatStatsBasicStore.user_count}} users have used this bot</div>
       </div>
     </div>
