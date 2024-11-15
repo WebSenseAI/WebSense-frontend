@@ -11,7 +11,7 @@
               >here you can manage your chatbot</span
             >
           </h1>
-          <template v-if="botInfoStore.botExists">
+          <template v-if="botInfoStore.botExists && botInfoStore.isReady">
             <BotInfo />
           </template>
           <NewBot v-else />

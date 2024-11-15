@@ -5,7 +5,7 @@
     the first 100 pages listed in your sitemap.
   </span>
   <form
-    v-if="!loading"
+    v-if="!loading && (!botInfoStore.botExists || botInfoStore.isReady)"
     class="flex flex-col gap-4"
     action=""
     @submit.prevent="handleCreateChatBot"
@@ -53,8 +53,9 @@
 import NewBotLoading from '@/components/setup/NewBotLoading.vue';
 import {  ref } from 'vue';
 import { createChatBot } from '@/services/botService';
-import { useUserInfoStore } from '@/store/index';
+import { useBotInfoStore, useUserInfoStore } from '@/store/index';
 const userInfoStore = useUserInfoStore();
+const botInfoStore = useBotInfoStore();
 
 const assistantName = ref('');
 const websiteUrl = ref('');
@@ -72,11 +73,13 @@ function handleCreateChatBot() {
     description: websiteDescription.value,
     message: firstMessage.value,
     key: openAIKey.value,
+    is_ready : false
   };
   createChatBot(botInfo, userInfoStore.id).finally(() => {
     loading.value = false;
     window.location.href = '/setup';
   });
+  botInfoStore.setBotInfo(botInfo);
 }
 export interface Props {
   isEdit?: boolean;

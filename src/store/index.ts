@@ -28,7 +28,8 @@ export const useBotInfoStore = defineStore('botInfoStore', {
         key: "",
         message: "",
         name: "",
-        website: ""
+        website: "",
+        isReady: "",
     }),
     getters: {
         fullName: (state) => `${state.name}`,
@@ -42,6 +43,7 @@ export const useBotInfoStore = defineStore('botInfoStore', {
             this.name = botInfo.name;
             this.message = botInfo.message;
             this.website = botInfo.website;
+            this.isReady = botInfo.is_ready; 
         },
     }
 });
