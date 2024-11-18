@@ -1,18 +1,23 @@
-<script setup lang="ts">
-import '@luisbeqja/web-sense/web-sense.js';
-</script>
-
+<script setup lang="ts"></script>
 <template>
-  <div class="main">
-    <RouterView />
-  </div>
+    <main>
+        <RouterView v-slot="{ Component }">
+            <component :is="Component" />
+        </RouterView>
+    </main>
 </template>
 
 <style scoped>
-.main {
-  background: url('./assets/blur_bg.png');
-  height: 100vh;
-  padding: 2rem;
-  overflow: hidden;
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.vue:hover {
+    filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
