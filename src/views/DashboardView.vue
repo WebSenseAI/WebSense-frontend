@@ -25,9 +25,10 @@ onBeforeMount(async () => {
     }
   if (!botInfoStore.botExists) {
     const botInfo = await fetchBotInfo();
-    botInfoStore.setBotInfo(botInfo);
+    if (botInfo) botInfoStore.setBotInfo(botInfo);
+  }else {
+    chatStatsComprehensiveStore.setComprehensiveStats(await getChatStats());
   }
-  chatStatsComprehensiveStore.setComprehensiveStats(await getChatStats());
 })
 
 </script>

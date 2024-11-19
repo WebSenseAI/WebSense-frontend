@@ -33,7 +33,7 @@ onBeforeMount(async () => {
     }
     if (!botInfoStore.botExists) {
       const botInfo = await fetchBotInfo();
-      botInfoStore.setBotInfo(botInfo);
+      if (botInfo) botInfoStore.setBotInfo(botInfo);
     }
   } catch (error) {
     console.error('Error fetching info:', error);
