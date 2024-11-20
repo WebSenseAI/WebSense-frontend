@@ -12,7 +12,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@luisbeqja/web-sense": "^0.1.1",
+    "@luisbeqja/web-sense": "^0.1.2",
     "@supabase/supabase-js": "^2.45.1",
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
